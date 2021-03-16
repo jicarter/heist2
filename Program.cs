@@ -20,9 +20,12 @@ namespace heist2
                  public bool IsSecure { get; set; }
                  public void TotalSecurity()
                  {
-                      if (CashOnHand <= 0 || AlarmScore <= 0 || VaultScore <= 0 || SecurityGuardScore <= 0)
+                      if (CashOnHand <= 0 && AlarmScore <= 0 && VaultScore <= 0 && SecurityGuardScore <= 0)
                       {
                           IsSecure = false;
+                      } else
+                      {
+                          IsSecure = true;
                       }
                  } 
             }
@@ -48,7 +51,29 @@ namespace heist2
 
                 public void PerformSkill(Bank bank)
                 {
-                    SkillLevel - Bank.AlarmScore
+                   Console.WriteLine($"{Name} is hacking the alarm system!");
+                }
+            }
+            public class Muscle : IRobber 
+            {
+               public string Name { get; set; }
+               public int SkillLevel {get ; set; }
+               public int PercentageCut { get; set; }
+
+                public void PerformSkill(Bank bank)
+                {
+                   Console.WriteLine($"{Name} is attempting to dispatch the guards!");
+                }
+            }
+            public class LockSpecialist : IRobber 
+            {
+               public string Name { get; set; }
+               public int SkillLevel {get ; set; }
+               public int PercentageCut { get; set; }
+
+                public void PerformSkill(Bank bank)
+                {
+                   Console.WriteLine($"{Name} is picking the lock!");
                 }
             }
         }
